@@ -1,0 +1,329 @@
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oyijon ❤️</title>
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+ margin:0;background:#07070d;color:#fff0cf;
+ font-family:Georgia,serif;overflow-x:hidden;
+}
+body:before{
+ content:"";position:fixed;inset:0;z-index:-2;
+ background:radial-gradient(ellipse at 80% 20%,#4a1b38,transparent 40%),
+ radial-gradient(ellipse at 10% 80%,#28203b,transparent 45%),#07070d;
+}
+#stars,#petals{position:fixed;inset:0;pointer-events:none;overflow:hidden}
+#stars{z-index:-1}
+.star{
+ position:absolute;width:3px;height:3px;border-radius:50%;
+ background:#ffe4a3;box-shadow:0 0 10px #ffca67;
+ animation:twinkle 2s infinite alternate;
+}
+@keyframes twinkle{to{opacity:.1;transform:scale(.4)}}
+.petal{
+ position:absolute;top:-30px;width:14px;height:21px;
+ border-radius:80% 10% 80% 10%;
+ background:linear-gradient(135deg,#ffb4c6,#a91e4d);
+ box-shadow:0 0 10px #ff7d9a;
+ animation:fall linear forwards;
+}
+@keyframes fall{
+ to{transform:translate(var(--drift),110vh) rotate(720deg);opacity:0}
+}
+header{
+ position:fixed;top:0;width:100%;z-index:5;
+ padding:17px;text-align:center;
+ background:#08070bd9;backdrop-filter:blur(12px);
+ border-bottom:1px solid #d7ad5b55;
+ color:#f5cc7c;letter-spacing:4px;
+}
+nav{margin-top:9px;letter-spacing:0}
+nav a{
+ color:#fff0cf;text-decoration:none;margin:0 10px;
+ font:12px Arial,sans-serif;
+}
+.hero{
+ min-height:100vh;display:flex;align-items:center;
+ justify-content:center;text-align:center;padding:110px 22px 60px;
+ position:relative;overflow:hidden;
+}
+.moon{
+ position:absolute;width:250px;height:250px;border-radius:50%;
+ right:8%;top:22%;
+ background:radial-gradient(circle at 35% 30%,#fff5d9,#e9b86f 35%,#74394b 75%);
+ box-shadow:0 0 90px #f3b65d66;
+ animation:float 5s ease-in-out infinite;
+}
+@keyframes float{50%{transform:translateY(-15px)}}
+.hero-content{position:relative;z-index:1}
+.eyebrow{font-size:19px;font-style:italic}
+h1{
+ font-size:clamp(65px,12vw,120px);font-weight:normal;
+ color:#f5cc7c;margin:22px 0;
+ text-shadow:0 0 35px #f0a94f88;
+ animation:appear 1.5s both;
+}
+@keyframes appear{
+ from{opacity:0;transform:translateY(30px)}
+ to{opacity:1;transform:translateY(0)}
+}
+.hero p{
+ max-width:500px;margin:auto;
+ font:15px/1.9 Arial,sans-serif;color:#e2d5c8;
+}
+button{
+ cursor:pointer;border:1px solid #f5cc7c;
+ border-radius:30px;padding:14px 23px;
+ background:linear-gradient(110deg,#70441f,#21120e);
+ color:#fff0cf;margin-top:22px;transition:.3s;
+}
+button:hover{transform:translateY(-4px);box-shadow:0 0 25px #f5cc7c77}
+section.content{padding:70px 7%;text-align:center}
+h2{font-size:clamp(27px,5vw,40px);font-weight:normal;color:#f5cc7c}
+.cards{
+ display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+ gap:18px;margin-top:35px;
+}
+.card{
+ padding:27px 20px;min-height:180px;
+ background:linear-gradient(145deg,#291721,#0e0c15);
+ border:1px solid #d7ad5b66;border-radius:17px;
+ transition:.35s;cursor:pointer;
+}
+.card:hover{transform:translateY(-8px);box-shadow:0 0 25px #e5b45d33}
+.icon{font-size:38px}
+.card h3{font-weight:normal;color:#fff0cf}
+.card p{font:13px/1.7 Arial,sans-serif;color:#cbbeb0}
+.message{
+ max-width:700px;margin:35px auto;padding:35px;
+ border:1px solid #f5cc7c88;border-radius:20px;
+ background:linear-gradient(145deg,#281522,#0b0a12);
+ font:15px/2 Arial,sans-serif;color:#f0e3d6;
+}
+.signature{color:#f5cc7c;font-size:18px;margin-top:25px}
+.rose{font-size:75px;animation:float 4s infinite}
+footer{
+ text-align:center;padding:30px;border-top:1px solid #d7ad5b44;
+ color:#cbb9a3;font:12px Arial,sans-serif;
+}
+.modal{
+ display:none;position:fixed;inset:0;z-index:10;
+ background:#020208e8;backdrop-filter:blur(10px);
+ align-items:center;justify-content:center;padding:20px;
+}
+.modal.open{display:flex;animation:appear .4s}
+.paper{
+ width:min(600px,100%);padding:35px;
+ background:linear-gradient(145deg,#35202b,#100d16);
+ border:1px solid #f5cc7c;border-radius:18px;
+ box-shadow:0 0 55px #d7a34b44;position:relative;
+}
+.paper p{font:14px/1.9 Arial,sans-serif}
+.close{position:absolute;right:10px;top:0;font-size:25px;background:none;border:0}
+#toast{
+ position:fixed;bottom:25px;left:50%;transform:translateX(-50%);
+ background:#21140f;border:1px solid #f5cc7c;border-radius:25px;
+ padding:13px 20px;display:none;z-index:20;
+}
+@media(max-width:650px){
+ .cards{grid-template-columns:1fr}
+ .moon{width:180px;height:180px;right:-45px;top:20%;opacity:.5}
+ nav a{margin:0 5px}
+ .hero{min-height:90vh}
+ .message{padding:22px}
+}
+</style>
+</head>
+<body>
+
+<div id="stars"></div>
+<div id="petals"></div>
+
+<header>
+ ♛ OYIJON ♛
+ <nav>
+  <a href="#home">Bosh sahifa</a>
+  <a href="#love">Mehr</a>
+  <a href="#letter">Maktub</a>
+ </nav>
+</header>
+
+<section class="hero" id="home">
+ <div class="moon"></div>
+ <div class="hero-content">
+  <div class="eyebrow">Dunyodagi eng yaxshi inson uchun</div>
+  <h1>Oyim ♡</h1>
+  <p>
+   Siz bor ekansiz, dunyo yanada go‘zal.
+   Siz uchun mehr va sevgiga to‘la kichik bir olam tayyorladim.
+  </p>
+  <button onclick="openLetter()">💌 Siz uchun maktub</button>
+  <br>
+  <button onclick="flowers()">🌹 Gullar yog‘ilsin</button>
+  <br>
+  <button onclick="toggleMusic()" id="musicButton">▶ Musiqani yoqish</button>
+ </div>
+</section>
+
+<section class="content" id="love">
+ <h2>Siz uchun maxsus...</h2>
+ <div class="cards">
+  <div class="card" onclick="openLetter()">
+   <div class="icon">💌</div>
+   <h3>Maxsus maktub</h3>
+   <p>Yuragimdan chiqqan samimiy so‘zlar.</p>
+  </div>
+  <div class="card" onclick="flowers()">
+   <div class="icon">🌹</div>
+   <h3>Bir dasta gul</h3>
+   <p>Eng mehribon onam uchun gullar.</p>
+  </div>
+  <div class="card" onclick="surprise()">
+   <div class="icon">👑</div>
+   <h3>Maxsus sovg‘a</h3>
+   <p>Bu sovg‘aning eng katta qismi — mening mehrim.</p>
+  </div>
+ </div>
+</section>
+
+<section class="content" id="letter">
+ <h2>Aziz oyijonim...</h2>
+ <div class="message">
+  Oyijon, har doim men uchun qayg‘urganingiz,
+  meni qo‘llab-quvvatlaganingiz va mehringizni
+  ayamaganingiz uchun katta rahmat.
+  <br><br>
+  Siz mening hayotimdagi eng qadrli insonlardan birisiz.
+  Doimo sog‘-salomat, baxtli va yuzingizdan tabassum
+  arimaydigan bo‘lsin.
+  <br><br>
+  Sizni juda yaxshi ko‘raman. Bu kichik saytni
+  aynan siz uchun tayyorladim.
+  <div class="signature">— JASURDAN ❤️</div>
+  <div class="rose">🌹</div>
+ </div>
+</section>
+
+<footer>
+ Butun qalbim bilan, siz uchun ♥<br><br>
+ © <span id="year"></span> | JASURDAN
+</footer>
+
+<div class="modal" id="modal">
+ <div class="paper">
+  <button class="close" onclick="closeLetter()">×</button>
+  <h2>Aziz oyijonim ❤️</h2>
+  <p>
+   Oyijon, siz mening eng qadrli insonimsiz.
+   Menga bergan mehringiz, sabringiz va duolaringiz
+   uchun chin qalbimdan rahmat.
+  </p>
+  <p>
+   Ba’zan hislarimni so‘z bilan ayta olmasligim mumkin,
+   lekin biling: sizni juda-juda yaxshi ko‘raman.
+   Doimo sog‘lom, baxtli va xotirjam bo‘ling.
+  </p>
+  <p>Bu sayt — sizga bo‘lgan katta mehrimning kichik ifodasi.</p>
+  <div class="signature">Sizni yaxshi ko‘ruvchi, Jasur ❤️</div>
+ </div>
+</div>
+<div id="toast"></div>
+
+<script>
+const stars=document.getElementById("stars");
+const petals=document.getElementById("petals");
+
+for(let i=0;i<100;i++){
+ const s=document.createElement("i");
+ s.className="star";
+ s.style.left=Math.random()*100+"%";
+ s.style.top=Math.random()*100+"%";
+ s.style.animationDelay=Math.random()*4+"s";
+ s.style.animationDuration=(2+Math.random()*4)+"s";
+ stars.appendChild(s);
+}
+
+function makePetal(){
+ const p=document.createElement("i");
+ p.className="petal";
+ p.style.left=Math.random()*100+"%";
+ p.style.setProperty("--drift",(Math.random()*220-110)+"px");
+ p.style.animationDuration=(6+Math.random()*8)+"s";
+ petals.appendChild(p);
+ setTimeout(()=>p.remove(),15000);
+}
+for(let i=0;i<20;i++)setTimeout(makePetal,i*250);
+setInterval(makePetal,900);
+
+function flowers(){
+ for(let i=0;i<45;i++)setTimeout(makePetal,i*55);
+ showToast("Oyijon, bu gullar siz uchun! 🌹");
+}
+function openLetter(){
+ document.getElementById("modal").classList.add("open");
+}
+function closeLetter(){
+ document.getElementById("modal").classList.remove("open");
+}
+function surprise(){
+ flowers();
+ openLetter();
+}
+function showToast(message){
+ const t=document.getElementById("toast");
+ t.textContent=message;
+ t.style.display="block";
+ clearTimeout(window.toastTimer);
+ window.toastTimer=setTimeout(()=>t.style.display="none",3000);
+}
+document.getElementById("modal").addEventListener("click",e=>{
+ if(e.target.id==="modal")closeLetter();
+});
+document.addEventListener("keydown",e=>{
+ if(e.key==="Escape")closeLetter();
+});
+document.getElementById("year").textContent=new Date().getFullYear();
+
+/* Musiqa brauzer ichida yaratiladi — alohida audio fayl kerak emas. */
+let audio=null,musicTimer=null,musicOn=false,note=0;
+const melody=[261.63,329.63,392,329.63,293.66,349.23,440,349.23];
+
+function playNote(){
+ if(!audio||!musicOn)return;
+ const osc=audio.createOscillator();
+ const gain=audio.createGain();
+ const now=audio.currentTime;
+ osc.type="sine";
+ osc.frequency.value=melody[note++%melody.length];
+ gain.gain.setValueAtTime(0.0001,now);
+ gain.gain.exponentialRampToValueAtTime(0.035,now+0.15);
+ gain.gain.exponentialRampToValueAtTime(0.0001,now+1);
+ osc.connect(gain);
+ gain.connect(audio.destination);
+ osc.start(now);
+ osc.stop(now+1.1);
+}
+async function toggleMusic(){
+ if(!audio)audio=new(window.AudioContext||window.webkitAudioContext)();
+ if(audio.state==="suspended")await audio.resume();
+ musicOn=!musicOn;
+ const btn=document.getElementById("musicButton");
+ if(musicOn){
+  playNote();
+  musicTimer=setInterval(playNote,1000);
+  btn.textContent="Ⅱ Musiqani o‘chirish";
+  showToast("Mayin musiqa yoqildi 🎵");
+ }else{
+  clearInterval(musicTimer);
+  btn.textContent="▶ Musiqani yoqish";
+  showToast("Musiqa o‘chirildi");
+ }
+}
+</script>
+</body>
+</html>
